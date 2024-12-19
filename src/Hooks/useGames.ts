@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 
 //add abort Controller later!
 
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+  icon: any
+}
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[];
 }
 
 interface FetchGame {

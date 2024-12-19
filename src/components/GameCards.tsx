@@ -9,7 +9,7 @@ const GameCards = () => {
       ) : (
         <div className="grid p-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {games.map((game) => (
-            <Card game={game}/>
+            <Card key={game.id} game={game}/>
           ))}
         </div>
       )}
