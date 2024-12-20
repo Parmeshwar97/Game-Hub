@@ -1,4 +1,4 @@
-import { Props } from "../Card";
+import { Props } from "./Card";
 import {
   FaWindows,
   FaPlaystation,
@@ -14,9 +14,8 @@ import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
 import Icons from "./Icons";
 
-
-const  IconsList = ({ game }: Props)=> {
-  const iconMap: { [key: string]:IconType} = {
+const IconsList = ({ game }: Props) => {
+  const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
     linux: FaLinux,
@@ -29,16 +28,17 @@ const  IconsList = ({ game }: Props)=> {
   };
 
   return (
-    <div className="flex gap-x-2">
+    <div className="flex gap-2">
       {game.parent_platforms.map(({ platform }) => (
-        <Icons key={platform?.id}
+        <Icons
+          key={platform?.id}
           platformSlug={platform?.slug}
           iconMap={iconMap}
-          className=""
+          className="text-md opacity-80"
         />
       ))}
     </div>
   );
-}
+};
 
 export default IconsList;

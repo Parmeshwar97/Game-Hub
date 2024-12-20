@@ -1,5 +1,5 @@
-import GameCards from "./components/GameCards";
-import NavBar from "./components/NavBar";
+import GameCards from "./GameCards";
+import NavBar from "./NavBar";
 
 const App = () => {
   return (
@@ -9,9 +9,8 @@ const App = () => {
       </div>
       <div className="flex justify-center">
         <div className="hidden lg:block">aside</div>
-      <GameCards/>
+        <GameCards />
       </div>
-      
     </div>
   );
 };
