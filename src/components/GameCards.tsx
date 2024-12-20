@@ -3,7 +3,7 @@ import CardSkeleton from "./CardSkeleton";
 import useGames from "../Hooks/useGames";
 const GameCards = () => {
   const { games, error, isLoading } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [1, 2, 3, 4, 5, 6,7,8,9,10];
   return (
     <>
       {error ? (
