@@ -5,13 +5,11 @@ import NavBar from "./components/NavBar";
 const App = () => {
   return (
     <div className="flex flex-col">
-      <div className="col-span-2">
-        <NavBar />
-      </div>
-      <div className="flex justify-center">
-        <div className="lg:flex hidden flex-col">
-          <GenresList />
-        </div>
+
+      <NavBar />
+
+      <div className=" grid grid-flow-col justify-center">
+        <GenresList />
         <GameCards />
       </div>
     </div>
