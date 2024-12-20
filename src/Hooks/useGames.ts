@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import useData from "./useData";
 
 //add abort Controller later!
 
@@ -17,34 +17,7 @@ export interface Game {
   metacritic: number;
 }
 
-interface FetchGame {
-  count: number;
-  results: Game[];
-}
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    fetchGames();
-  }, []);
-
-  const fetchGames = async () => {
-    setIsLoading(true);
-    try {
-      const jsonData = await fetch(
-        "https://api.rawg.io/api/games?key=b64c552882404bbc8d107fd968d50730"
-      );
-      const data: FetchGame = await jsonData.json();
-      setGames(data.results);
-      setIsLoading(false);
-    } catch (err: any) {
-      setError(err.message);
-      setIsLoading(false);
-    }
-  };
-  return { games, error,isLoading };
-};
+const useGames = () => useData<Game>('/games');
 
 export default useGames;
