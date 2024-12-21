@@ -6,7 +6,7 @@ import CriticScore from "./CriticScore";
 export interface Props {
   game: Game;
 }
-const Card = ({ game }: Props) => {
+const GameCard = ({ game }: Props) => {
   return (
     <div className="bg-neutral-900 rounded-lg max-h-fit overflow-hidden">
       <img src={getCroppedImage(game.background_image)} className="w-full" />
@@ -21,4 +21,4 @@ const Card = ({ game }: Props) => {
     </div>
   );
 };
-export default Card;
+export default GameCard;

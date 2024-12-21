@@ -1,32 +1,44 @@
 import { useEffect, useState } from "react";
+import apiClient from "../services/api-client";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface FetchResponse<T> {
   id: number;
   results: T[];
 }
-const useData =<T> (endpoint:string) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchGames();
-  }, []);
+  useEffect(
+    () => {
+      const controller = new AbortController();
+      setIsLoading(true);
 
-  const fetchGames = async () => {
-    setIsLoading(true);
-    try {
-      const jsonData = await fetch(
-        `https://api.rawg.io/api${endpoint}?key=b64c552882404bbc8d107fd968d50730`
-      );
-      const data: FetchResponse<T> = await jsonData.json();
-      setData(data.results);
-      setIsLoading(false);
-    } catch (err: any) {
-      setError(err.message);
-      setIsLoading(false);
-    }
-  };
+      apiClient
+        .get<FetchResponse<T>>(endpoint, {
+          signal: controller.signal,
+          ...requestConfig,
+        })
+        .then((res) => {
+          setData(res.data.results);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          if (err instanceof CanceledError) return;
+          setError(err.message);
+          setIsLoading(false);
+        });
+
+      return () => controller.abort();
+    },
+    deps ? [...deps] : []
+  );
   return { data, error, isLoading };
 };
 

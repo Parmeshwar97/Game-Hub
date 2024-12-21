@@ -1,13 +1,6 @@
 const CardSkeleton = () => {
   return (
-    // <div className="bg-neutral-900 rounded-lg max-h-fit overflow-hidden animate-pulse">
-    //   <div className="animate-pulse w-60 h-64"></div>
-    //   <div className="p-5 flex flex-col gap-y-2">
-    //     <p className="font-extrabold text-xl"></p>
-    //     <p></p>
-    //   </div>
-    // </div>
-    <div className="w-72 max-w-sm mx-auto">
+    <div className="w-64 max-w-sm mx-auto">
       <div className="animate-pulse">
         <div className="bg-gray-500 h-48 w-full rounded-t-lg"></div>
 
