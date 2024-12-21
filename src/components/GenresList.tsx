@@ -4,11 +4,12 @@ import GenresSkeleton from "./GenresSkeleton";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenresList = ({ onSelectGenre }: Props) => {
+const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading } = useGenres();
-  const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12];
+  const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <div className="lg:flex hidden flex-col max-w-fit">
       {isLoading && (
@@ -27,6 +28,9 @@ const GenresList = ({ onSelectGenre }: Props) => {
               className="size-8 rounded m-3"
             />
             <button
+              style={
+                genre.id === selectedGenre?.id ? { fontWeight: "bolder" } : {}
+              }
               onClick={() => onSelectGenre(genre)}
               className="hover:underline"
             >

@@ -10,7 +10,7 @@ const App = () => {
     <div className="flex flex-col px-3">
       <NavBar />
       <div className=" grid grid-flow-col">
-        <GenresList onSelectGenre={(genre)=> setSelectedGenre(genre)}/>
+        <GenresList selectedGenre={selectedGenre} onSelectGenre={(genre)=> setSelectedGenre(genre)}/>
         <GameList selectedGenre={selectedGenre}/>
       </div>
     </div>
