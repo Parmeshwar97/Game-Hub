@@ -17,7 +17,6 @@ console.log(data);
   if (error) return null;
   return (
     <select
-    
       value={JSON.stringify(selectedPlatform)}
           onChange={changeHandler}
           style={{ width:'auto'}}
