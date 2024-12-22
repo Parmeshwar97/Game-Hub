@@ -1,14 +1,17 @@
 import Card from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
-import useGames from "../Hooks/useGames";
+import useGames, { Platform } from "../Hooks/useGames";
 import { Genre } from "../Hooks/useGenres";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameCards = ({selectedGenre}:Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre);
+const GameCards = ({selectedPlatform,selectedGenre}:Props) => {
+  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+  console.log(data);
+  
   const skeletons = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15];
   return (
     <>
