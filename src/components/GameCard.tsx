@@ -11,12 +11,11 @@ const GameCard = ({ game }: Props) => {
     <div className="bg-neutral-900 rounded-lg max-h-fit overflow-hidden">
       <img src={getCroppedImage(game.background_image)} className="w-full" />
       <div className="p-5 flex flex-col gap-y-2">
-              <p className="font-extrabold text-xl">{game.name}</p>
-              <div className="flex items-center justify-between">
-                <IconsList game={game} />
-        <CriticScore score={game.metacritic}/>  
+        <p className="font-extrabold text-xl">{game.name}</p>
+        <div className="flex items-center justify-between">
+          <IconsList game={game} />
+          <CriticScore score={game.metacritic} />
         </div>
-        
       </div>
     </div>
   );
