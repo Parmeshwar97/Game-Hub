@@ -15,8 +15,7 @@ export interface GameQuery {
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  
-  console.log(gameQuery.sortOrder);
+
   return (
     <div className="flex flex-col px-3">
       <NavBar />
