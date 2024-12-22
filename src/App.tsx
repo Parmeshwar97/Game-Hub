@@ -10,11 +10,13 @@ import SortSelector from "./components/SortSelector";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
+  
+  console.log(gameQuery.sortOrder);
   return (
     <div className="flex flex-col px-3">
       <NavBar />
@@ -31,9 +33,9 @@ const App = () => {
                 setGameQuery({ ...gameQuery, platform })
               }
             />
-            <SortSelector />
+            <SortSelector onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+            
           </div>
-
           <GameList gameQuery={gameQuery} />
         </div>
       </div>

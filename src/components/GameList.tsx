@@ -9,8 +9,6 @@ interface Props {
 
 const GameCards = ({gameQuery}:Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
-  console.log(data);
-  
   const skeletons = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15];
   return (
     <>

@@ -1,16 +1,27 @@
-const SortSelector = () => {
+interface Props{
+    onSelectSortOrder: (sortOrder: string) => void;
+}
+
+const SortSelector = ({onSelectSortOrder}:Props) => {
+  const sortOrders = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date " },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average rating" },
+    ];
 
   return (
-    <select  className="bg-neutral-800 box-border px-2 rounded-md mb-3 py-1.5">
-
-      <option value="relevance">Relevance </option>
-      <option value="date">Date added</option>
-      <option value="name">Name </option>
-      <option value="release-date">Release Date </option>
-      <option value="popularity">Popularity </option>
-      <option value="avg-rating">Average rating</option>
+    <select onChange={(event)=> onSelectSortOrder(event.target.value)}
+     className="bg-neutral-800 box-border px-2 rounded-md mb-3 py-1.5">
+      {sortOrders.map((order) => (
+        <option key={order.value} value={order.value}>
+          {order.label}
+        </option>
+      ))}
     </select>
   );
-}
+};
 
 export default SortSelector;
