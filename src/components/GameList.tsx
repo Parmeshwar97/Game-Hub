@@ -9,7 +9,9 @@ interface Props {
 
 const GameCards = ({gameQuery}:Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
-  const skeletons = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  
+//! Page not found!(when data is empty) [remaining to fix]
   return (
     <>
       {error && <div>{error}</div>}

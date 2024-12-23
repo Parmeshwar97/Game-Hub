@@ -15,26 +15,28 @@ export interface GameQuery {
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  
-  console.log(gameQuery.sortOrder);
+
   return (
     <div className="flex flex-col px-3">
       <NavBar />
-      <div className=" grid grid-flow-col">
+      <div className="flex">
         <GenresList
           selectedGenre={gameQuery.genre}
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
-        <div>
-          <div className="flex gap-x-4">
+        <div className="w-full">
+          <div className="grid grid-cols-[8rem,9rem] sm:grid-cols-[fit-content(100px)_fit-content(100px)] gap-x-3">
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
               onSelectPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platform })
               }
             />
-            <SortSelector onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
-            
+            <SortSelector
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
           </div>
           <GameList gameQuery={gameQuery} />
         </div>
