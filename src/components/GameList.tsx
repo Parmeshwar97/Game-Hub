@@ -7,24 +7,27 @@ interface Props {
   gameQuery: GameQuery;
 }
 
-const GameCards = ({gameQuery}:Props) => {
+const GameCards = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  
-//! Page not found!(when data is empty) [remaining to fix]
+
+  if (error) return <div className="text-center font-semibold text-xl">{error}</div>;
+  if (data.length === 0)
+    return (
+      <div className="text-center font-semibold text-xl">
+        404
+        <br /> Page Not Found!{" "}
+      </div>
+    );
   return (
     <>
-      {error && <div>{error}</div>}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-fit gap-6">
-        {
-          isLoading &&
-          skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)
-        }
-        {
-          data.map((game) => (
-            <Card key={game.id} game={game} />))
-        }
-        </div>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-fit gap-6">
+        {isLoading &&
+          skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
+        {data.map((game) => (
+          <Card key={game.id} game={game} />
+        ))}
+      </div>
     </>
   );
 };

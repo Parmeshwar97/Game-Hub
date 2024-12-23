@@ -1,4 +1,4 @@
-import { Props } from "./Card";
+import { Props } from "./GameCard";
 import {
   FaWindows,
   FaPlaystation,
