@@ -11,6 +11,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
 
   return (
     <div className="flex flex-col px-3">
-      <NavBar />
+      <NavBar onSearch={(searchText)=>setGameQuery({...gameQuery,searchText})} />
       <div className="flex">
         <GenresList
           selectedGenre={gameQuery.genre}
