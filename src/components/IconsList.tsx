@@ -34,7 +34,7 @@ const IconsList = ({ game }: Props) => {
           key={platform?.id}
           platformSlug={platform?.slug}
           iconMap={iconMap}
-          className="text-md opacity-80"
+          className="text-md opacity-50"
         />
       ))}
     </div>
