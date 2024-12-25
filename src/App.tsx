@@ -6,6 +6,7 @@ import { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./Hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -26,6 +27,7 @@ const App = () => {
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
         <div className="w-full">
+          <GameHeading gameQuery={gameQuery}/>
           <div className="grid grid-cols-[8rem,9rem] sm:grid-cols-[fit-content(100px)_fit-content(100px)] gap-x-3">
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
