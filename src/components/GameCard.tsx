@@ -2,6 +2,7 @@ import IconsList from "./IconsList";
 import { Game } from "../Hooks/useGames";
 import getCroppedImage from "../services/image-url";
 import CriticScore from "./CriticScore";
+import Emoji from "./Emoji";
 
 export interface Props {
   game: Game;
@@ -15,7 +16,10 @@ const GameCard = ({ game }: Props) => {
           <IconsList game={game} />
           <CriticScore score={game.metacritic} />
         </div>
-        <p className="font-extrabold text-xl">{game.name}</p>
+        <p className="font-extrabold text-xl">
+          {game.name}
+          <Emoji rating={game.rating_top} />
+        </p>
       </div>
     </div>
   );

@@ -3,8 +3,15 @@ interface Props {
 }
 
 const CriticScore = ({ score }: Props) => {
+  const styles =
+    score > 75
+      ? { borderColor: "green", color: "green" }
+      : { borderColor: "yellow", color: "yellow" };
+  if (!score) return null;
   return (
-    <div className={`px-[5px] py-0 text-sm bg-[#373737] rounded ]`}>{score}</div>
+    <div style={styles} className="border-[1px] px-[5px] text-sm rounded">
+      {score}
+    </div>
   );
 };
 
