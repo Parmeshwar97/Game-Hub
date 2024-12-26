@@ -8,7 +8,10 @@ interface Props {
 }
 
 const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { data, isLoading } = useGenres();
+  const { data, isLoading, error } = useGenres();
+  
+  if (error) return null;
+
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
@@ -21,6 +24,7 @@ const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
             ))}
           </div>
         )}
+        
         <ul>
           {data.map((genre) => (
             <li key={genre.id} className="flex items-center">
