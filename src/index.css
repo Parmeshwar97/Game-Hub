@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: black;
-    color: #fff;
-    overflow-x: hidden;
+/*Remaining to add Dark/Light mode*/
+:root {
+  --bg-black: #151515;
 }
-form{
-    width:100%;
+
+body {
+  background-color: #151515;
+  color: #fff;
+  overflow-x: hidden;
+}
+form {
+  width: 100%;
 }
