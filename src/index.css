@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/*Remaining to add Dark/Light mode*/
-:root {
-  --bg-black: #151515;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  background-color: #151515;
-  color: #fff;
-  overflow-x: hidden;
-}
 form {
-  width: 100%;
+  width: 90%;
+}
+select{
+  color: black;
+}
+.dark{
+  background-color: #151515;
+  color: white;
 }

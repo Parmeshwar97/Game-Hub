@@ -13,31 +13,37 @@ export interface GameQuery {
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
+  isDarkMode: boolean;
 }
 
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
+  const [gameQuery, setGameQuery] = useState<GameQuery>({ isDarkMode: true } as GameQuery);
   return (
-    <div className="flex flex-col px-3">
-      <NavBar onSearch={(searchText)=>setGameQuery({...gameQuery,searchText})} />
-      <div className="flex">
+    <div className={`flex flex-col px-3 h-full ${gameQuery.isDarkMode && "dark"}`}>
+      <NavBar
+        isDarkMode={gameQuery.isDarkMode}
+        onDarkMode={(isDarkMode) => setGameQuery({ ...gameQuery, isDarkMode })}
+        onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+      />
+      <div className="flex ">
         <GenresList
           selectedGenre={gameQuery.genre}
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
         <div className="w-full">
-          <GameHeading gameQuery={gameQuery}/>
-          <div className="grid grid-cols-[8rem,9rem] sm:grid-cols-[fit-content(100px)_fit-content(100px)] gap-x-3">
+          <GameHeading gameQuery={gameQuery} />
+          <div className="grid grid-cols-[8rem,9rem] text-white sm:grid-cols-[fit-content(100px)_fit-content(100px)] gap-x-3 py-4 px-1 font-semibold ">
+
+            <SortSelector 
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
+
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
               onSelectPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platform })
-              }
-            />
-            <SortSelector
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
               }
             />
           </div>

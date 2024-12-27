@@ -11,9 +11,9 @@ const GameCard = ({ game }: Props) => {
   return (
     <div
       className="
-    bg-[#202020] rounded-lg border-2
+    dark:bg-[#202020] bg-[#abababb6]  rounded-lg
 
-    border-neutral-900 max-h-fit overflow-hidden"
+     max-h-fit overflow-hidden"
     >
       <img src={getCroppedImage(game.background_image)} className="w-full" />
 

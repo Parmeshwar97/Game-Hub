@@ -28,13 +28,13 @@ const IconsList = ({ game }: Props) => {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-1.5">
       {game.parent_platforms.map(({ platform }) => (
         <Icons
           key={platform?.id}
           platformSlug={platform?.slug}
           iconMap={iconMap}
-          className="text-md opacity-50"
+          className="text-md opacity-70 dark:opacity-50"
         />
       ))}
     </div>

@@ -15,8 +15,8 @@ const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
-      <div className="lg:flex hidden flex-col w-1/6">
-      <h1 className="text-3xl font-bold m-2.5 ">Genres</h1>
+      <div className="lg:flex hidden flex-col mt-6 w-1/6">
+      <h1 className="text-2xl font-bold my-1 mx-3 ">Genres</h1>
         {isLoading && (
           <div className="flex flex-col gap-5 rounded items-center py-3 w-11/12 animate-pulse bg-zinc-800">
             {skeleton.map((num) => (

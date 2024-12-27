@@ -13,16 +13,18 @@ const GameCards = ({ gameQuery }: Props) => {
 
   if (error)
     return <div className="text-center font-semibold text-xl">{error}</div>;
+
+  if (!isLoading && data.length === 0)
+    return <div className="text-center font-semibold text-xl">Page Not Found!</div>;
+
   return (
-    <>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 h-fit gap-6">
-        {isLoading &&
-          skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
-        {data.map((game) => (
-          <Card key={game.id} game={game} />
-        ))}
-      </div>
-    </>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 h-fit gap-6">
+      {isLoading &&
+        skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
+      {data.map((game) => (
+        <Card key={game.id} game={game} />
+      ))}
+    </div>
   );
 };
 

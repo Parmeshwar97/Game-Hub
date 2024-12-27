@@ -14,15 +14,15 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
     <select
       value={JSON.stringify(selectedPlatform)}
       onChange={(event) => onSelectPlatform(JSON.parse(event.target.value))}
-      className="bg-neutral-800 box-border px-2 rounded-md mb-3 py-1.5"
+      className="dark:bg-neutral-800 bg-[#EDEDED] dark:text-white box-border px-2 rounded-md mb-3 py-1.5 w-auto"
     >
       <option className="hidden">Platforms</option>
       {data.map((platform) => {
-        return (
-          <option value={JSON.stringify(platform)} key={platform.id}>
-            {platform.name}
-          </option>
-        );
+      return (
+        <option value={JSON.stringify(platform)} key={platform.id}>
+        {platform.name}
+        </option>
+      );
       })}
     </select>
   );

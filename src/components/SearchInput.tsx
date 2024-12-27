@@ -12,13 +12,13 @@ const SearchInput = ({ onSearch }: Props) => {
         if (ref.current) onSearch(ref.current?.value);
       }}
     >
-      <div className="h-11">
+      <div className="h-10">
         <input
           ref={ref}
           placeholder="Search games..."
-          className="px-5 pl-11 py-2 w-full text-lg rounded-3xl bg-neutral-800 placeholder-zinc-600"
+          className="pl-11  w-11/12 md:w-full py-2 rounded-3xl bg-[#EDEDED] dark:bg-[#202020] placeholder-zinc-600"
         />
-        <div className="relative max-w-1 bottom-[30px] left-[19px]">
+        <div className="relative max-w-1 bottom-[27px] dark:text-white text-black left-[19px]">
           <BsSearch />
         </div>
       </div>
