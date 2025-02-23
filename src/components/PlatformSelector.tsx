@@ -1,9 +1,10 @@
-import { Platform } from "../Hooks/useGames";
+
 import usePlatforms from "../Hooks/usePlatforms";
+import { Platforms } from "../services/api-client";
 
 interface Props {
-  onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  onSelectPlatform: (platform: Platforms) => void;
+  selectedPlatform: Platforms | null;
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
