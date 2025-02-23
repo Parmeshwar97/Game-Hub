@@ -8,7 +8,7 @@ interface Props {
 }
 
 const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { data, isLoading, error } = useGenres();
+  const { data, error, isLoading } = useGenres();
   
   if (error) return null;
 
@@ -26,7 +26,7 @@ const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
         )}
         
         <ul>
-          {data.map((genre) => (
+          {data?.results.map((genre) => (
             <li key={genre.id} className="flex items-center">
               <img
                 src={getCroppedImage(genre.image_background)}
