@@ -4,13 +4,14 @@ import GenresList from "./components/GenresList";
 import NavBar from "./components/NavBar";
 import { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./Hooks/useGames";
+
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import { Platforms } from "./services/api-client";
 
 export interface GameQuery {
   genre: Genre | null;
-  platform: Platform | null;
+  platform: Platforms | null;
   sortOrder: string;
   searchText: string;
   isDarkMode: boolean;
@@ -25,7 +26,7 @@ const App = () => {
         onDarkMode={(isDarkMode) => setGameQuery({ ...gameQuery, isDarkMode })}
         onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
       />
-      <div className="flex ">
+      <div className="flex mb-3">
         <GenresList
           selectedGenre={gameQuery.genre}
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
