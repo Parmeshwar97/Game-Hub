@@ -2,7 +2,6 @@ import { useState } from "react";
 import GameList from "./components/GameList";
 import GenresList from "./components/GenresList";
 import NavBar from "./components/NavBar";
-import { Genre } from "./Hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 
 import SortSelector from "./components/SortSelector";
@@ -11,7 +10,7 @@ import { Platforms } from "./services/api-client";
 
 
 export interface GameQuery {
-  genre: Genre | null;
+  genreId?: number;
   platform: Platforms | null;
   sortOrder: string;
   searchText: string;
@@ -19,7 +18,9 @@ export interface GameQuery {
 }
 
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({ isDarkMode: true } as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    isDarkMode: true,
+  } as GameQuery);
   return (
     <div
       className={`flex flex-col px-3 h-full ${gameQuery.isDarkMode && "dark"}`}
@@ -31,8 +32,10 @@ const App = () => {
       />
       <div className="flex mb-3">
         <GenresList
-          selectedGenre={gameQuery.genre}
-          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          selectedGenreId={gameQuery.genreId}
+          onSelectGenreId={(id) => {
+            return setGameQuery({ ...gameQuery, genreId: id });
+          }}
         />
         <div className="w-full">
           <GameHeading gameQuery={gameQuery} />
