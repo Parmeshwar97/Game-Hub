@@ -1,59 +1,31 @@
-import { useState } from "react";
 import GameList from "./components/GameList";
 import GenresList from "./components/GenresList";
 import NavBar from "./components/NavBar";
-import PlatformSelector from "./components/PlatformSelector";
+// import PlatformSelector from "./components/PlatformSelector";
 
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import { Platforms } from "./services/api-client";
-
-
-export interface GameQuery {
-  genreId?: number;
-  platform: Platforms | null;
-  sortOrder: string;
-  searchText: string;
-  isDarkMode: boolean;
-}
+import useGameQueryStore from "./store";
 
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    isDarkMode: true,
-  } as GameQuery);
+  const { gameQuery } = useGameQueryStore();
   return (
     <div
       className={`flex flex-col px-3 h-full ${gameQuery.isDarkMode && "dark"}`}
     >
-      <NavBar
-        isDarkMode={gameQuery.isDarkMode}
-        onDarkMode={(isDarkMode) => setGameQuery({ ...gameQuery, isDarkMode })}
-        onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
-      />
+      <NavBar />
       <div className="flex mb-3">
-        <GenresList
-          selectedGenreId={gameQuery.genreId}
-          onSelectGenreId={(id) => {
-            return setGameQuery({ ...gameQuery, genreId: id });
-          }}
-        />
+        <GenresList />
         <div className="w-full">
-          <GameHeading gameQuery={gameQuery} />
-          <div className="grid grid-cols-[8rem,9rem] text-white sm:grid-cols-[fit-content(100px)_fit-content(100px)] gap-x-3 py-4 px-1 font-semibold ">
-            <SortSelector
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            />
-
+          <GameHeading />
+          <div className="grid grid-cols-[8rem,9rem] text-white sm:grid-cols-[fit-content(400px)_fit-content(400px)] gap-x-3 py-4 px-1 font-semibold ">
+            <SortSelector />
+            {/* 
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
+
+            /> */}
           </div>
-          <GameList gameQuery={gameQuery} />
+          <GameList />
         </div>
       </div>
     </div>

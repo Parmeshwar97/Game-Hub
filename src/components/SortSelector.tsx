@@ -1,10 +1,10 @@
 // ! Pending to add 'Order by:' in Select Tag. ✖️
 
-interface Props{
-    onSelectSortOrder: (sortOrder: string) => void;
-}
+import useGameQueryStore from "../store";
 
-const SortSelector = ({onSelectSortOrder}:Props) => {
+
+const SortSelector = () => {
+  const setSortOrder = useGameQueryStore(s=>s.setSortOrder)
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -15,7 +15,7 @@ const SortSelector = ({onSelectSortOrder}:Props) => {
     ];
 
   return (
-    <select onChange={(event)=> onSelectSortOrder(event.target.value)}
+    <select onChange={(event)=> setSortOrder(event.target.value)}
      className="dark:bg-neutral-800 bg-[#EDEDED] px-2 dark:text-white rounded-md mb-3 py-1.5">
       {sortOrders.map((order) => (
         <option key={order.value} value={order.value}>

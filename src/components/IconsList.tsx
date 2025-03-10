@@ -29,7 +29,7 @@ const IconsList = ({ game }: Props) => {
 
   return (
     <div className="flex gap-1.5">
-      {game.parent_platforms.map(({ platform }) => (
+      {game.parent_platforms?.map(({ platform }) => (
         <Icons
           key={platform?.id}
           platformSlug={platform?.slug}

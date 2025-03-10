@@ -1,13 +1,9 @@
 import { FaMoon, FaSun } from "react-icons/fa";
+import useGameQueryStore from "../store";
 
-interface Props {
-  isDarkMode: boolean;
-  onDarkMode: (isDarkMode: boolean) => void;
-}
-const DarkMode = ({ isDarkMode, onDarkMode }: Props) => {
-  const handleSwitch = () => {
-    onDarkMode(!isDarkMode);
-  };
+const DarkMode = () => {
+  const isDarkMode = useGameQueryStore((s) => s.gameQuery.isDarkMode);
+  const setDarkMode = useGameQueryStore((s) => s.setDarkMode);
   return (
     <>
       <div className="relative inline-block md:w-16 w-11 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -17,7 +13,7 @@ const DarkMode = ({ isDarkMode, onDarkMode }: Props) => {
           id="toggle"
           className="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer"
           checked={isDarkMode}
-          onChange={handleSwitch}
+          onChange={() => setDarkMode(!isDarkMode)}
         />
         <label
           htmlFor="toggle"
