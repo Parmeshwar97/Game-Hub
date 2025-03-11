@@ -1,6 +1,5 @@
-
 import usePlatforms from "../Hooks/usePlatforms";
-import { Platforms } from "../services/api-client";
+import { Platforms } from "../entities/Platforms";
 
 interface Props {
   onSelectPlatform: (platform: Platforms) => void;
@@ -19,11 +18,11 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
     >
       <option className="hidden">Platforms</option>
       {data?.results.map((platform) => {
-      return (
-        <option value={JSON.stringify(platform)} key={platform.id}>
-        {platform.name}
-        </option>
-      );
+        return (
+          <option value={JSON.stringify(platform)} key={platform.id}>
+            {platform.name}
+          </option>
+        );
       })}
     </select>
   );

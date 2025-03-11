@@ -1,4 +1,4 @@
-import { Platforms } from "./services/api-client";
+import { Platforms } from "./entities/Platforms";
 import { create } from "zustand";
 
 export interface GameQuery {
