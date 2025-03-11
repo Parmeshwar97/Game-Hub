@@ -6,7 +6,7 @@ import useGameQueryStore from "../store";
 
 
 const HomePage = () => {
-      const { gameQuery } = useGameQueryStore();
+    const { gameQuery } = useGameQueryStore();
   return (
     <div
       className={`flex flex-col px-3 h-full ${gameQuery.isDarkMode && "dark"}`}
