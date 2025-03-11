@@ -1,19 +1,16 @@
-import GameList from "./components/GameList";
-import GenresList from "./components/GenresList";
-import NavBar from "./components/NavBar";
-// import PlatformSelector from "./components/PlatformSelector";
+import GameHeading from "../components/GameHeading";
+import GameList from "../components/GameList";
+import GenresList from "../components/GenresList";
+import SortSelector from "../components/SortSelector";
+import useGameQueryStore from "../store";
 
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
-import useGameQueryStore from "./store";
 
-const App = () => {
-  const { gameQuery } = useGameQueryStore();
+const HomePage = () => {
+      const { gameQuery } = useGameQueryStore();
   return (
     <div
       className={`flex flex-col px-3 h-full ${gameQuery.isDarkMode && "dark"}`}
     >
-      <NavBar />
       <div className="flex mb-3">
         <GenresList />
         <div className="w-full">
@@ -30,5 +27,6 @@ const App = () => {
       </div>
     </div>
   );
-};
-export default App;
+}
+
+export default HomePage
