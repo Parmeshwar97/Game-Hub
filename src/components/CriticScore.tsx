@@ -9,9 +9,9 @@ const CriticScore = ({ score }: Props) => {
       : { borderColor: "yellow", color: "yellow" };
   if (!score) return null;
   return (
-    <div style={styles} className="border-[1px] px-[5px] text-sm rounded">
+    <span style={styles} className="border-[1px] px-[5px] text-sm rounded">
       {score}
-    </div>
+    </span>
   );
 };
 

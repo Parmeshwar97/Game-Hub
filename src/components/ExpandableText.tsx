@@ -11,10 +11,10 @@ const ExpandableText = ({ children  }:Props) => {
   if (children.length <= limit) return <>{children}</>;
   const summary = expanded ? children : children.substring(0, limit)+'...';
   return (
-    <p>
+    <p className="text-lg mt-1">
       {summary}
-      <button className="bg-yellow-200 ms-1 font-bold px-2 py-1 rounded-md " onClick={() => setExpanded(!expanded)}>
-        {!expanded ? "Show More" : "Show Less"}
+      <button className="bg-amber-200 text-base ms-1 font-semibold px-2  rounded-md text-black " onClick={() => setExpanded(!expanded)}>
+        {!expanded ? "Read More" : "Show Less"}
       </button>
     </p>
   );
