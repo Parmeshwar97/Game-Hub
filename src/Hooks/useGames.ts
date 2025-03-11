@@ -10,11 +10,13 @@ export interface Game {
   parent_platforms: { platform: Platforms }[];
   metacritic: number;
   rating_top: number;
+  slug: string;
+  description_raw: string;
 }
 
 const apiClient = new APIClient<Game>("/games");
 const useGames = () => {
-  const gameQuery = useGameQueryStore(s=>s.gameQuery);
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>

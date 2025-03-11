@@ -1,8 +1,9 @@
-import IconsList from "./IconsList";
+import { Link } from "react-router-dom";
 import { Game } from "../Hooks/useGames";
 import getCroppedImage from "../services/image-url";
 import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";
+import IconsList from "./IconsList";
 
 export interface Props {
   game: Game;
@@ -11,9 +12,8 @@ const GameCard = ({ game }: Props) => {
   return (
     <div
       className="
-    dark:bg-[#202020] bg-[#abababb6]  rounded-lg
-
-     max-h-fit overflow-hidden"
+    dark:bg-[#202020] bg-[hsla(0,0%,67%,1)]  rounded-lg hover:scale-105
+     max-h-fit overflow-hidden transition-all"
     >
       <img src={getCroppedImage(game.background_image)} className="w-full" />
 
@@ -23,10 +23,10 @@ const GameCard = ({ game }: Props) => {
           <CriticScore score={game.metacritic} />
         </div>
 
-        <p className="font-extrabold text-xl">
+        <Link to={`games/${game.slug}`} className="font-extrabold text-xl">
           {game.name}
           <Emoji rating={game.rating_top} />
-        </p>
+        </Link>
       </div>
     </div>
   );

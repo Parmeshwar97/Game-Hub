@@ -37,7 +37,7 @@ const GameCards = () => {
       hasMore={!!hasNextPage}
       dataLength={fetchedGames ?? 0}
     >
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 h-fit gap-6">
+      <div className="grid mt-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 h-fit gap-6">
         {isLoading &&
           skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
         {data?.pages.map((page, i) => {

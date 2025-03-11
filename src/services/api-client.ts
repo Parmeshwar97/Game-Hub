@@ -8,7 +8,6 @@ export interface Platforms {
   id: number;
   name: string;
   slug: string;
-  
 }
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
@@ -24,8 +23,11 @@ class APIClient<T> {
   }
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint,config)
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
+  };
+  get = (id: string ) => {
+    return axiosInstance.get<T>(this.endpoint + "/" + id).then((res) => res.data);
   };
 }
 export default APIClient;
